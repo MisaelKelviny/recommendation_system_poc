@@ -38,7 +38,7 @@ public class bookController {
     }
 
     @GetMapping("/genre/{genre}")
-    @Operation(summary = "Find book by id")
+    @Operation(summary = "Find book by genre")
     public ResponseEntity<List<Book>> findByGenre(@PathVariable String genre) {
         List<Book> books = bookService.findByGenre(genre);
         if (books.isEmpty()) {

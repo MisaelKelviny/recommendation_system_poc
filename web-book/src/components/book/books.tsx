@@ -20,7 +20,7 @@ const Books = () => {
         </h1>
       </div>
       <div className="space-y-5 flex flex-col">
-        <h2 className="text-xl font-semibold">Lançamentos</h2>
+        <h2 className="text-xl font-semibold">New releases</h2>
 
         <div className="flex overflow-x-scroll hide-scroll-bar">
           <div className="flex flex-nowrap">
