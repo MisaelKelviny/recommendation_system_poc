@@ -22,3 +22,12 @@ Frontend:
 Backend:
 ![image](https://github.com/user-attachments/assets/c5423b32-5ff7-4f0e-8c11-fa4b8c3f95ce)
 
+
+# Next Steps
+- Adding authentication to different users
+- Implement the search input
+- Create the recommendation system
+- Create the recommendation section in the home page
+- Add to docker
+- Creates a CI/CD pipeline
+- Upload Frontend and Backend to the Cloud 
