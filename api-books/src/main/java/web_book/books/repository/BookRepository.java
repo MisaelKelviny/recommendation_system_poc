@@ -11,8 +11,6 @@ import java.util.List;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Long> {
-    List<Book> findByGenre(String genre);
-
     @Query("SELECT b FROM Book b WHERE " +
             "(:year IS NULL OR (EXTRACT(YEAR FROM b.publicationDate) = :year)) AND " +
             "(:genre IS NULL OR b.genre = :genre) AND " +

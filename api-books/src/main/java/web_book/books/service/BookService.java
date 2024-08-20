@@ -24,10 +24,6 @@ public class BookService {
         return result.orElse(null);
     }
 
-    public List<Book> findByGenre(String genre) {
-        return bookRepository.findByGenre(genre);
-    }
-
     public List<Book> findByFilters(Integer year, String genre, String search, Pageable pageable) {
         return bookRepository.findBooksByFilters(year, genre, search, pageable);
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Book } from "../../interface/Book";
 import { getByGenre, getBySearch } from "../../services/bookServices";
 import Card from "../card";
@@ -18,9 +18,15 @@ const BookList = () => {
 
   return (
     <div className="w-full">
-      <div className="w-full flex flex-wrap gap-5">
+      <div className="w-full flex flex-wrap gap-y-5">
         {books.map((b) => (
-          <Card key={b.id} book={b} />
+          <Link
+            to={`/books/detail/${b.id}`}
+            key={b.id}
+            className="shrink-0 inline-block px-3"
+          >
+            <Card book={b} />
+          </Link>
         ))}
       </div>
     </div>

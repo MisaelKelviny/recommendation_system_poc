@@ -39,14 +39,4 @@ public class bookController {
     public Book findById(@PathVariable Long id) {
         return bookService.findById(id);
     }
-
-    @GetMapping("/genre/{genre}")
-    @Operation(summary = "Find book by genre")
-    public ResponseEntity<List<Book>> findByGenre(@PathVariable String genre) {
-        List<Book> books = bookService.findByGenre(genre);
-        if (books.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(books);
-    }
 }

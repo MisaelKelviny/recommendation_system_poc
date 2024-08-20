@@ -1,10 +1,12 @@
+import { ChevronLeft } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Book } from "../../interface/Book";
 import BookRecommendations from "./book-recommendations";
 
 const BookDetails = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [book, setBook] = useState<Book>({} as Book);
 
   useEffect(() => {
@@ -15,7 +17,13 @@ const BookDetails = () => {
 
   return (
     <div className="flex flex-col w-full">
-      <div className="w-full flex h-full items-center gap-8 pt-40">
+      <button
+        onClick={() => navigate(-1)}
+        className="w-full justify-start flex hover:text-purple-800"
+      >
+        <ChevronLeft /> Back
+      </button>
+      <div className="w-full flex h-full items-center gap-8 pt-20">
         <div className="flex w-2/4 items-center justify-center">
           <img src={book.cover} alt={book.title} className="object-cover" />
         </div>
