@@ -13,6 +13,13 @@ import java.util.List;
 public interface BookRepository extends JpaRepository<Book, Long> {
     List<Book> findByGenre(String genre);
 
-    @Query("SELECT b FROM Book b WHERE EXTRACT(YEAR FROM b.publicationDate) = :year ORDER BY b.publicationDate DESC")
-    List<Book> findBooksByPublicationYear(@Param("year") int year, Pageable pageable);
+    @Query("SELECT b FROM Book b WHERE " +
+            "(:year IS NULL OR (EXTRACT(YEAR FROM b.publicationDate) = :year)) AND " +
+            "(:genre IS NULL OR b.genre = :genre) AND " +
+            "(LOWER(title) ILIKE LOWER(CONCAT('%', :search, '%')) OR LOWER(author) ILIKE LOWER(CONCAT('%', :search, '%')) OR :search IS NULL) " +
+            "ORDER BY b.publicationDate DESC")
+    List<Book> findBooksByFilters(@Param("year") Integer year,
+                                  @Param("genre") String genre,
+                                  @Param("search") String search,
+                                  Pageable pageable);
 }

@@ -1,17 +1,20 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Book } from "../../interface/Book";
+import { getByGenre, getBySearch } from "../../services/bookServices";
 import Card from "../card";
 
 const BookList = () => {
-  const { genre } = useParams();
+  const [searchParams] = useSearchParams();
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    fetch(`http://localhost:8080/api/books/genre/${genre}`)
-      .then((response) => response.json())
-      .then((data) => setBooks(data));
-  }, [genre]);
+    const result = searchParams.get("genre")
+      ? getByGenre(searchParams.get("genre")!)
+      : getBySearch(searchParams.get("search")!);
+
+    result.then((response) => response.json()).then((data) => setBooks(data));
+  }, [searchParams]);
 
   return (
     <div className="w-full">

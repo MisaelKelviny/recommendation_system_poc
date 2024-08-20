@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { Book } from "../../interface/Book";
-import Card from "../card";
+import HorizontalScroll from "../horizontal-scroll/horizontal";
+import BookRecommendations from "./book-recommendations";
 
 const Books = () => {
   const [books, setBooks] = useState<Book[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:8080/api/books?year=2024&limit=10")
+    fetch("http://localhost:8080/api/books?year=2024&page=0&size=10")
       .then((response) => response.json())
       .then((data) => setBooks(data));
   }, []);
@@ -19,32 +19,10 @@ const Books = () => {
           📖 Welcome to the book shop!!
         </h1>
       </div>
-      <div className="space-y-5 flex flex-col">
-        <h2 className="text-xl font-semibold">New releases</h2>
-
-        <div className="flex overflow-x-scroll hide-scroll-bar">
-          <div className="flex flex-nowrap">
-            {books.map((b) => (
-              <Link
-                to={`/books/detail/${b.id}`}
-                key={b.id}
-                className="shrink-0 inline-block px-3"
-              >
-                <Card book={b} />
-              </Link>
-            ))}
-          </div>
-        </div>
+      <div className="space-y-6">
+        <HorizontalScroll books={books} title="New releases" />
+        <BookRecommendations />
       </div>
-
-      {/* <div className="space-y-5">
-        <h2 className="text-xl font-semibold">Recomendado para você</h2>
-        <div>
-          {books.map((b) => (
-            <Card key={b.id} book={b} />
-          ))}
-        </div>
-      </div> */}
     </div>
   );
 };

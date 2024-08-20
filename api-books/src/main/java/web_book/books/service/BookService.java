@@ -1,7 +1,8 @@
 package web_book.books.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import web_book.books.entity.Book;
 import web_book.books.repository.BookRepository;
@@ -14,6 +15,10 @@ public class BookService {
     @Autowired
     private BookRepository bookRepository;
 
+    public List<Book> findAll(Pageable pageable){
+        return bookRepository.findAll(pageable).getContent();
+    }
+
     public Book findById(Long id){
         Optional<Book> result = bookRepository.findById(id);
         return result.orElse(null);
@@ -23,11 +28,7 @@ public class BookService {
         return bookRepository.findByGenre(genre);
     }
 
-    public List<Book> getBooksByPublicationYear(int year, int limit) {
-        return bookRepository.findBooksByPublicationYear(year, PageRequest.of(0, limit));
-    }
-
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();
+    public List<Book> findByFilters(Integer year, String genre, String search, Pageable pageable) {
+        return bookRepository.findBooksByFilters(year, genre, search, pageable);
     }
 }

@@ -17,12 +17,12 @@ const router = createBrowserRouter([
         element: <Books />,
       },
       {
-        path: "/books/detail/:id",
-        element: <BookDetails />,
+        path: "/books",
+        element: <BookList />,
       },
       {
-        path: "/books/genre/:genre",
-        element: <BookList />,
+        path: "/books/detail/:id",
+        element: <BookDetails />,
       },
     ],
   },

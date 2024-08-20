@@ -3,6 +3,8 @@ package web_book.books.controller;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import web_book.books.entity.Book;
@@ -21,14 +23,15 @@ public class bookController {
 
     @GetMapping
     @Operation(summary = "Find all books")
-    public List<Book> findAll(@RequestParam(value = "year", required = false) Integer year,
-                              @RequestParam(value = "limit", defaultValue = "10") int limit)
-    {
-        if (year == null) {
-            return bookService.getAllBooks();
-        } else {
-            return bookService.getBooksByPublicationYear(year, limit);
-        }
+    public List<Book> getBooksByFilters(
+            @RequestParam(value = "year", required = false) Integer year,
+            @RequestParam(value = "genre", required = false) String genre,
+            @RequestParam(value = "search", required = false) String search,
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "size", defaultValue = "20") int size) {
+
+        Pageable pageable = PageRequest.of(page, size);
+        return bookService.findByFilters(year, genre, search, pageable);
     }
 
     @GetMapping("/{id}")
