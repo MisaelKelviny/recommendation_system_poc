@@ -17,7 +17,13 @@ Think of this as a basic example of how recommendation algorithms work. They can
 
 # LAST UPDATES
 Frontend:
-![image](https://github.com/user-attachments/assets/a282cb3c-d964-4cc6-b583-76bf8c19257b)
+![image](https://github.com/user-attachments/assets/89069e78-6bc1-419e-baef-754a6c8bd67e)
+Search:
+![image](https://github.com/user-attachments/assets/2f3d1dc5-bb53-45d4-b12f-bf4e6e3f5325)
+Book Detail:
+![image](https://github.com/user-attachments/assets/d57ec268-cdef-4516-a687-1559769e344e)
+
+
 
 Backend:
 ![image](https://github.com/user-attachments/assets/c5423b32-5ff7-4f0e-8c11-fa4b8c3f95ce)
