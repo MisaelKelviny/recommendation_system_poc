@@ -26,14 +26,14 @@ Book Detail:
 
 
 Backend:
-![image](https://github.com/user-attachments/assets/c5423b32-5ff7-4f0e-8c11-fa4b8c3f95ce)
+![image](https://github.com/user-attachments/assets/d1f4193b-ce0b-4004-911a-8717e9d52bdc)
 
 
 # Next Steps
 - Adding authentication to different users
-- Implement the search input
+- ~~Implement the search input~~
 - Create the recommendation system
-- Create the recommendation section in the home page
+- ~~Create the recommendation section in the home page~~
 - Add to docker
 - Creates a CI/CD pipeline
 - Upload Frontend and Backend to the Cloud 
